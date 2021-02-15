@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
 	//building a nodeJS bundle
 	target: 'node',
@@ -8,7 +10,7 @@ module.exports = {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'build'),
 	},
-	//run babel on every file
+	//running babel
 	module: {
 		rules: [
 			{
