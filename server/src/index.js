@@ -1,12 +1,10 @@
 import express from 'express';
-import renderer from './helpers/renderer';
+import Renderer from './helpers/Renderer';
 
 const app = express();
 
 app.use(express.static('public'));
 
-app.get('/', (req, res) => res.send(renderer()));
+app.get('/', (req, res) => res.send(Renderer(req)));
 
-app.listen(3000, () => {
-	console.log('Heard @ 3000');
-});
+app.listen(3000, () => console.log('Heard @ 3000'));

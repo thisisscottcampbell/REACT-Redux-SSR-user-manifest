@@ -1,11 +1,18 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import Home from '../client/components/Home';
+import { StaticRouter } from 'react-router-dom';
+import Routes from '../client/components/Routes';
+//import Home from '../client/components/Home';
 
-export default () => {
-	const content = renderToString(<Home />);
+const Renderer = (req) => {
+	// const content = renderToString(<Home />);
+	const content = renderToString(
+		<StaticRouter location={req.path} context={{}}>
+			<Routes />
+		</StaticRouter>
+	);
 
-	const html = `
+	const HTML = `
     <html>
       <head></head>
       <body>
@@ -14,4 +21,8 @@ export default () => {
       </body>
     </html>
   `;
+
+	return HTML;
 };
+
+export default Renderer;
